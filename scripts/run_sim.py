@@ -29,24 +29,24 @@ simulator = sims[0]
 cache_max_size = 1024*1024*1024*1024
 cache_min_size = 0
 exp_groups = {
-    "test": {
-        "apps" : ["metis"],
-        "cache_perc_list" : [2.5],
-        "block_sizes" : [4*1024],
-        "assocs" : [4],
-    },
+    # "test": {
+    #     "apps" : ["metis"],
+    #     "cache_perc_list" : [2.5],
+    #     "block_sizes" : [4*1024],
+    #     "assocs" : [4],
+    # },
     # "sizes": {
     #     "apps" : ["redis", "metis", "turi"],
     #     "cache_perc_list" : [2.5, 1.0, 0.75, 0.5, 0.25, 0.1, 0.05, 0.02, 0.01, 0.005],
     #     "block_sizes" : [4*1024],
     #     "assocs" : [4],
     # },
-    # "blocks": {
-    #     "apps" : ["redis"],
-    #     "cache_perc_list" : [1.0, 0.5, 0.25, 0.005],
-    #     "block_sizes" : [4*1024, 64, 256, 512, 1*1024, 8*4*1024],
-    #     "assocs" : [4],
-    # }
+    "blocks": {
+        "apps" : ["redis"],
+        "cache_perc_list" : [1.0, 0.5, 0.25, 0.005],
+        "block_sizes" : [4*1024, 64, 256, 512, 1*1024, 8*4*1024],
+        "assocs" : [4],
+    }
 }
 
 #############################################
