@@ -69,7 +69,7 @@ def profile_to_str(profile, simulator):
     if "mem" in profile:
         params = "{}".format(profile["mem"])
     elif "I1" in profile:
-        params = " '--I1={}  --D1={} --L2={} --DRAM={}' ".format( 
+        params = " '--I1={}  --D1={} --L2={} --DRAM={} --STRATEGY=2' ".format( 
                                         profile["I1"],
                                         profile["D1"],
                                         profile["L2"],
@@ -162,9 +162,11 @@ def get_cache_configs(peak_mem, num_cores, simulator, exp):
 def get_dram_configs(peak_mem, num_cores):
     # Cachegrind cache configs
     #######################
-    total_size = 33 * 1024 * 1024 * 1024
-    local_size = 1 * 1024 * 1024 * 1024
+    # total_size = 33 * 1024 * 1024 * 1024
+    # local_size = 1 * 1024 * 1024 * 1024
+    local_size = 32 * 1024 * 1024
     remote_size = 32 * 1024 * 1024 * 1024
+    total_size = remote_size + local_size
     page_size = 4 * 1024
 
     config_name = "dram"
@@ -237,7 +239,6 @@ if __name__ == "__main__":
         select_apps = {}
         for aa in exp_groups[ee]["apps"]:
             select_apps[aa] = apps[aa]
-
         (new_profs, counter) = get_apps_profiles(select_apps, simulator, runs, exp_groups[ee], counter)
         for aa_new in new_profs:
             if aa_new not in profiles:
